@@ -1,15 +1,26 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
+.app-container {
+  background-color: #353b45;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: black;
-  padding: .5em 1em;
+  color: rgb(235, 235, 235);
+  padding: 0.5em 1em;
+}
+
+.login-form-container {
+  width: 100%;
+  background: rgba(235, 235, 235, 0.1);
+  border-radius: 10px;
+  padding: 3rem 1.5rem;
+}
+
+.login-switch {
+  opacity: 0.75;
 }
