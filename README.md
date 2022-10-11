@@ -1,1 +1,1 @@
-# Simple login / signup component using routes and validation. Styled with ChakraUI and vanilla CSS
+# Simple login / signup component using routes and validation. Styled with ChakraUI and vanilla CSS.
