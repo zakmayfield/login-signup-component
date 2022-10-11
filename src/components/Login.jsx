@@ -7,11 +7,12 @@ import {
   InputRightElement,
   Button,
   Icon,
-  Box
+  Box,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = ({ setUser }) => {
   const navigate = useNavigate();
@@ -28,11 +29,26 @@ const Login = ({ setUser }) => {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleSubmit = () => {
     if (formData.username && formData.password) {
       setUser(formData.username);
       navigate('/');
-      setFormData({ username: '', password: '' });
+      setFormData({ username: '', email: '' });
+    } else {
+      validate();
+    }
+  };
+
+  const validate = () => {
+    if (!formData.username) {
+      toast.error('Username is required!');
+    } else if (!formData.password) {
+      toast.error('Password is required!');
+    } else if (!formData.username || !formData.password) {
+      toast.error('Fill out all fields!');
+    } else {
+      return true;
     }
   };
 
@@ -86,12 +102,18 @@ const Login = ({ setUser }) => {
           </FormControl>
         </Stack>
 
-        <Button w='full' size='lg' mt='5' colorScheme='twitter' onClick={handleSubmit}>
+        <Button
+          w='full'
+          size='lg'
+          mt='5'
+          colorScheme='twitter'
+          onClick={handleSubmit}
+        >
           Log In
         </Button>
 
         <Box mt='3' fontSize='sm' className='login-switch'>
-            <Link to='/signup'>Create an account</Link>
+          <Link to='/signup'>Create an account</Link>
         </Box>
       </form>
     </Box>
