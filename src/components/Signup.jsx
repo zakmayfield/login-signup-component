@@ -78,13 +78,13 @@ const Signup = ({ setUser }) => {
       className='form-container'
     >
       <Info type='signup' />
-      <Box w={{ md: '50%' }} p='10'>
+      <Box w={{ md: '50%', lg: '40%' }}>
         <form className='form'>
           <Stack spacing={5}>
             <FormControl isRequired>
               <FormLabel fontSize='sm'>Username</FormLabel>
               <Input
-                size='lg'
+                size={{ base: 'lg', md: 'md' }}
                 type='text'
                 placeholder='Username'
                 _placeholder={{ opacity: 0.5, color: 'black' }}
@@ -97,7 +97,7 @@ const Signup = ({ setUser }) => {
             <FormControl isRequired>
               <FormLabel fontSize='sm'>Email</FormLabel>
               <Input
-                size='lg'
+                size={{ base: 'lg', md: 'md' }}
                 type='text'
                 placeholder='email@email.com'
                 _placeholder={{ opacity: 0.5, color: 'black' }}
@@ -115,7 +115,7 @@ const Signup = ({ setUser }) => {
                   placeholder='Password'
                   _placeholder={{ opacity: 0.5, color: 'black' }}
                   pr='4.5'
-                  size='lg'
+                  size={{ base: 'lg', md: 'md' }}
                   name='password'
                   value={formData.password}
                   onChange={handleFormUpdate}
@@ -123,7 +123,7 @@ const Signup = ({ setUser }) => {
                 <InputRightElement w='4.5rem'>
                   <Button
                     size='sm'
-                    mt='2'
+                    mt={{ base: '2', md: '0' }}
                     color='black'
                     bg='none'
                     onClick={handleShowHide1}
@@ -143,7 +143,7 @@ const Signup = ({ setUser }) => {
                   placeholder='Confirm Password'
                   _placeholder={{ opacity: 0.5, color: 'black' }}
                   pr='4.5'
-                  size='lg'
+                  size={{ base: 'lg', md: 'md' }}
                   name='password2'
                   value={formData.password2}
                   onChange={handleFormUpdate}
@@ -151,7 +151,7 @@ const Signup = ({ setUser }) => {
                 <InputRightElement w='4.5rem'>
                   <Button
                     size='sm'
-                    mt='2'
+                    mt={{ base: '2', md: '0' }}
                     color='black'
                     bg='none'
                     onClick={handleShowHide2}

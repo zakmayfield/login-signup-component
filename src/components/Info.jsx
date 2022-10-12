@@ -6,7 +6,7 @@ const Info = ({ type }) => {
       flexDirection={{ base: 'column' }}
       w={{ base: '100%', md: '50%' }}
       textAlign='left'
-      mb={{ base: '10', md: '0' }}
+      mb={{ base: '1', md: '0' }}
       p='10'
     >
       <Heading as='h1' lineHeight='1' mb='3' color='white'>
