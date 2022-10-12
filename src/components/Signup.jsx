@@ -10,8 +10,8 @@ import {
   Box,
   Flex,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Info from './Info';
@@ -24,6 +24,9 @@ const Signup = ({ setUser }) => {
     password: '',
     password2: '',
   }));
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRedeemed, setIsRedeemed] = useState(false);
 
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -67,6 +70,23 @@ const Signup = ({ setUser }) => {
     }
   };
 
+  const redeemDiscount = () => {
+    if (!isRedeemed) {
+      setIsLoading(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsRedeemed(true);
+      }, 2000);
+    } else {
+      alert(`You've already redeemed your discount!`);
+    }
+  };
+
+  useEffect(() => {
+    console.log('loading ->', isLoading);
+  }, [isLoading]);
+
   return (
     <Flex
       w={{ base: '100%', sm: '75%', md: '100%' }}
@@ -79,6 +99,23 @@ const Signup = ({ setUser }) => {
     >
       <Info type='signup' />
       <Box w={{ md: '50%', lg: '40%' }}>
+        <Button
+          disabled={isRedeemed ? true : false}
+          w='full'
+          colorScheme='twitter'
+          size='lg'
+          fontSize='lg'
+          pr='3'
+          mb='5'
+          onClick={redeemDiscount}
+        >
+          {
+            !isRedeemed && !isLoading ? `Redeem 20% off of your subscription` : isRedeemed && !isLoading ? `20% off ✅` : (!isRedeemed && isLoading) && <Icon as={FaSpinner} className='spinner-icon' /> 
+          }
+          {/* {!isRedeemed && !isLoading ? `Redeem 20% off of your subscription` : `20% off ✅`} */}
+          {/* {!isRedeemed && isLoading && <Icon as={FaSpinner} />} */}
+        </Button>
+
         <form className='form'>
           <Stack spacing={5}>
             <FormControl isRequired>
@@ -168,7 +205,7 @@ const Signup = ({ setUser }) => {
             w='full'
             size='lg'
             mt='5'
-            colorScheme='twitter'
+            colorScheme='whatsapp'
             onClick={handleSubmit}
           >
             Register
