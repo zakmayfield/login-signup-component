@@ -114,7 +114,7 @@ const Login = ({ setUser }) => {
             w='full'
             size='lg'
             mt='5'
-            colorScheme='twitter'
+            colorScheme='whatsapp'
             onClick={handleSubmit}
           >
             Log In
