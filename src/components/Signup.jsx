@@ -15,15 +15,22 @@ import { FaEye, FaEyeSlash, FaSpinner } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Info from './Info';
+import Confetti from 'react-confetti';
+import useWindowDimensions from '../hooks/useWindowDim';
 
 const Signup = ({ setUser }) => {
   const navigate = useNavigate();
+  const { height, width } = useWindowDimensions();
   const [formData, setFormData] = useState(() => ({
     username: '',
     email: '',
     password: '',
     password2: '',
   }));
+
+  useEffect(() => {
+    console.log(height, width);
+  }, [height, width]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isRedeemed, setIsRedeemed] = useState(false);
@@ -97,6 +104,15 @@ const Signup = ({ setUser }) => {
       mb='5'
       className='form-container'
     >
+      {isRedeemed && (
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          initialVelocityY={3}
+          numberOfPieces={75}
+        />
+      )}
       <Info type='signup' />
       <Box w={{ md: '50%', lg: '40%' }}>
         <Button
@@ -109,11 +125,12 @@ const Signup = ({ setUser }) => {
           mb='5'
           onClick={redeemDiscount}
         >
-          {
-            !isRedeemed && !isLoading ? `Redeem 20% off of your subscription` : isRedeemed && !isLoading ? `20% off ✅` : (!isRedeemed && isLoading) && <Icon as={FaSpinner} className='spinner-icon' /> 
-          }
-          {/* {!isRedeemed && !isLoading ? `Redeem 20% off of your subscription` : `20% off ✅`} */}
-          {/* {!isRedeemed && isLoading && <Icon as={FaSpinner} />} */}
+          {!isRedeemed && !isLoading
+            ? `Redeem 20% off of your subscription`
+            : isRedeemed && !isLoading
+            ? `20% off ✅`
+            : !isRedeemed &&
+              isLoading && <Icon as={FaSpinner} className='spinner-icon' />}
         </Button>
 
         <form className='form'>
