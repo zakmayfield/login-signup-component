@@ -14,13 +14,24 @@
   padding: 0.5em 1em;
 }
 
-.login-form-container {
-  width: 100%;
-  background: rgba(235, 235, 235, 0.1);
+.form-container {
+  /* width: 100%; */
+  background: #dd7572;
   border-radius: 10px;
   padding: 3rem 1.5rem;
 }
 
 .login-switch {
   opacity: 0.75;
+}
+
+.info-subtext {
+  opacity: 0.75;
+}
+
+form {
+  background: #feffff;
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  color: rgb(24, 24, 24);
 }

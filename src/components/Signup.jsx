@@ -8,11 +8,13 @@ import {
   Button,
   Icon,
   Box,
+  Flex,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Info from './Info';
 
 const Signup = ({ setUser }) => {
   const navigate = useNavigate();
@@ -66,109 +68,118 @@ const Signup = ({ setUser }) => {
   };
 
   return (
-    <Box
-      w={{ base: '100%', sm: '75%', md: '50%' }}
+    <Flex
+      w={{ base: '100%', sm: '75%', md: '100%' }}
+      flexDirection={{ base: 'column', md: 'row' }}
+      alignItems={{ md: 'center' }}
+      justifyContent={{ md: 'center' }}
       mt='5'
       mb='5'
-      className='login-form-container'
+      className='form-container'
     >
-      Register
-      <form className='form'>
-        <Stack spacing={5}>
-          <FormControl isRequired>
-            <FormLabel>Username</FormLabel>
-            <Input
-              size='lg'
-              type='text'
-              placeholder='Username'
-              name='username'
-              value={formData.username}
-              onChange={handleFormUpdate}
-            />
-          </FormControl>
-
-          <FormControl isRequired>
-            <FormLabel>Email</FormLabel>
-            <Input
-              size='lg'
-              type='text'
-              placeholder='email@email.com'
-              name='email'
-              value={formData.email}
-              onChange={handleFormUpdate}
-            />
-          </FormControl>
-
-          <FormControl isRequired>
-            <FormLabel>Password</FormLabel>
-            <InputGroup>
+      <Info type='signup' />
+      <Box w={{ md: '50%' }} p='10'>
+        <form className='form'>
+          <Stack spacing={5}>
+            <FormControl isRequired>
+              <FormLabel fontSize='sm'>Username</FormLabel>
               <Input
-                type={show1 ? 'text' : 'password'}
-                placeholder='Password'
-                pr='4.5'
                 size='lg'
-                name='password'
-                value={formData.password}
+                type='text'
+                placeholder='Username'
+                _placeholder={{ opacity: 0.5, color: 'black' }}
+                name='username'
+                value={formData.username}
                 onChange={handleFormUpdate}
               />
-              <InputRightElement w='4.5rem'>
-                <Button
-                  size='sm'
-                  mt='2'
-                  color='black'
-                  bg='none'
-                  onClick={handleShowHide1}
-                  className='show-hide-icon'
-                >
-                  {show1 ? <Icon as={FaEyeSlash} /> : <Icon as={FaEye} />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
+            </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel>Confirm Password</FormLabel>
-            <InputGroup>
+            <FormControl isRequired>
+              <FormLabel fontSize='sm'>Email</FormLabel>
               <Input
-                type={show2 ? 'text' : 'password'}
-                placeholder='Confirm Password'
-                pr='4.5'
                 size='lg'
-                name='password2'
-                value={formData.password2}
+                type='text'
+                placeholder='email@email.com'
+                _placeholder={{ opacity: 0.5, color: 'black' }}
+                name='email'
+                value={formData.email}
                 onChange={handleFormUpdate}
               />
-              <InputRightElement w='4.5rem'>
-                <Button
-                  size='sm'
-                  mt='2'
-                  color='black'
-                  bg='none'
-                  onClick={handleShowHide2}
-                  className='show-hide-icon'
-                >
-                  {show2 ? <Icon as={FaEyeSlash} /> : <Icon as={FaEye} />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
-        </Stack>
+            </FormControl>
 
-        <Button
-          w='full'
-          size='lg'
-          mt='5'
-          colorScheme='twitter'
-          onClick={handleSubmit}
-        >
-          Register
-        </Button>
+            <FormControl isRequired>
+              <FormLabel fontSize='sm'>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  type={show1 ? 'text' : 'password'}
+                  placeholder='Password'
+                  _placeholder={{ opacity: 0.5, color: 'black' }}
+                  pr='4.5'
+                  size='lg'
+                  name='password'
+                  value={formData.password}
+                  onChange={handleFormUpdate}
+                />
+                <InputRightElement w='4.5rem'>
+                  <Button
+                    size='sm'
+                    mt='2'
+                    color='black'
+                    bg='none'
+                    onClick={handleShowHide1}
+                    className='show-hide-icon'
+                  >
+                    {show1 ? <Icon as={FaEyeSlash} /> : <Icon as={FaEye} />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
 
-        <Box mt='3' fontSize='sm' className='login-switch'>
-          <Link to='/login'>Already have an account?</Link>
-        </Box>
-      </form>
-    </Box>
+            <FormControl isRequired>
+              <FormLabel fontSize='sm'>Confirm Password</FormLabel>
+              <InputGroup>
+                <Input
+                  type={show2 ? 'text' : 'password'}
+                  placeholder='Confirm Password'
+                  _placeholder={{ opacity: 0.5, color: 'black' }}
+                  pr='4.5'
+                  size='lg'
+                  name='password2'
+                  value={formData.password2}
+                  onChange={handleFormUpdate}
+                />
+                <InputRightElement w='4.5rem'>
+                  <Button
+                    size='sm'
+                    mt='2'
+                    color='black'
+                    bg='none'
+                    onClick={handleShowHide2}
+                    className='show-hide-icon'
+                  >
+                    {show2 ? <Icon as={FaEyeSlash} /> : <Icon as={FaEye} />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+          </Stack>
+
+          <Button
+            w='full'
+            size='lg'
+            mt='5'
+            colorScheme='twitter'
+            onClick={handleSubmit}
+          >
+            Register
+          </Button>
+
+          <Box mt='3' fontSize='sm' className='login-switch'>
+            <Link to='/login'>Already have an account?</Link>
+          </Box>
+        </form>
+      </Box>
+    </Flex>
   );
 };
 
