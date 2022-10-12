@@ -20,17 +20,16 @@ import useWindowDimensions from '../hooks/useWindowDim';
 
 const Signup = ({ setUser }) => {
   const navigate = useNavigate();
+
+  // this height and width can be achieved by using window.innerHeight/Width but i haven't used a custom hook in a while so i figued i'd implement one
   const { height, width } = useWindowDimensions();
+
   const [formData, setFormData] = useState(() => ({
     username: '',
     email: '',
     password: '',
     password2: '',
   }));
-
-  useEffect(() => {
-    console.log(height, width);
-  }, [height, width]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isRedeemed, setIsRedeemed] = useState(false);

@@ -8,6 +8,8 @@ const Info = ({ type }) => {
       textAlign='left'
       mb={{ base: '1', md: '0' }}
       p='10'
+      borderLeft={{ md: '2px solid #00000050', lg: '4px solid #00000050' }}
+      className='info-container'
     >
       <Heading as='h1' lineHeight='1' mb='3' color='white'>
         {type === 'signup'
