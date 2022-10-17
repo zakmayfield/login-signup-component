@@ -2,7 +2,6 @@
   "name": "login-signup-form",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zakmayfield.github.io/login-signup-component",
   "dependencies": {
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.10.4",
